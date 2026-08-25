@@ -2,9 +2,10 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 
-const chatRoutes = require("./routes/chat");
-const imageRoutes = require("./routes/image");
-const videoRoutes = require("./routes/video");
+// Note: repo me "routes" folder nahi hai, saari files root me hain — isliye "./chat" wagera
+const chatRoutes = require("./chat");
+const imageRoutes = require("./image");
+const videoRoutes = require("./video");
 
 const app = express();
 app.use(cors());
