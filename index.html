@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+*{box-sizing:border-box; margin:0; padding:0;}
+body,html{
+  min-height:100vh;
+  font-family:Arial;
+  background:#050505;
+  color:white;
+  overflow-x:hidden;
+  overflow-y:auto;
+  scroll-behavior:smooth;
+}
+
+/* ================= LANDING SCREEN ================= */
+#landingScreen{
+  min-height:100vh;
+}
+
+nav{
+  display:flex;
+  justify-content:space-between;
+  padding:25px 50px;
+}
+
+.logo{
+  font-size:25px;
+  font-weight:bold;
+}
+
+.hero{
+  min-height:75vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  flex-direction:column;
+  padding:40px 20px;
+}
+
+.hero h1{
+  font-size:60px;
+  background:linear-gradient(90deg,#00ffff,#ff00ff);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.hero p{
+  font-size:20px;
+  color:#aaa;
+  margin-top:10px;
+}
+
+.start{
+  padding:15px 35px;
+  border-radius:30px;
+  border:none;
+  background:white;
+  font-size:18px;
+  cursor:pointer;
+  margin-top:25px;
+}
+
+.start:hover{
+  box-shadow:0 0 25px cyan;
+}
+
+/* ================= PRICING SECTION ================= */
+.pricing{
+  padding:60px 40px 30px 40px;
+  text-align:center;
+}
+
+.pricing h2{
+  font-size:36px;
+  background:linear-gradient(90deg,#00ffff,#ff00ff);
+  -webkit-background-clip:text;
+  color:transparent;
+  margin-bottom:10px;
+}
+
+.pricing > p{
+  color:#aaa;
+  margin-bottom:35px;
+  font-size:15px;
+}
+
+.plans{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:22px;
+  max-width:1300px;
+  margin:0 auto;
+}
+
+.plan-card{
+  width:220px;
+  background:#0a0a0a;
+  border:2px solid #1c1c1c;
+  border-radius:18px;
+  padding:26px 20px;
+  text-align:left;
+  transition:0.25s;
+  display:flex;
+  flex-direction:column;
+}
+
+.plan-card:hover{
+  border-color:cyan;
+  box-shadow:0 0 25px rgba(0,255,255,0.35);
+  transform:translateY(-6px);
+}
+
+.plan-card.featured{
+  border-color:cyan;
+  box-shadow:0 0 20px rgba(0,255,255,0.25);
+}
+
+.plan-tag{
+  display:inline-block;
+  font-size:11px;
+  color:black;
+  background:cyan;
+  padding:3px 10px;
+  border-radius:20px;
+  margin-bottom:12px;
+  font-weight:bold;
+  align-self:flex-start;
+}
+
+.plan-name{
+  font-size:14px;
+  color:#888;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.plan-price{
+  font-size:32px;
+  font-weight:bold;
+  color:white;
+  margin:8px 0 18px 0;
+}
+
+.plan-price span{
+  font-size:14px;
+  color:#888;
+  font-weight:normal;
+}
+
+.plan-features{
+  list-style:none;
+  flex:1;
+}
+
+.plan-features li{
+  font-size:13px;
+  color:#ccc;
+  margin-bottom:10px;
+  padding-left:20px;
+  position:relative;
+}
+
+.plan-features li::before{
+  content:"✓";
+  position:absolute;
+  left:0;
+  color:cyan;
+  font-weight:bold;
+}
+
+.plan-btn{
+  margin-top:20px;
+  padding:10px;
+  border-radius:20px;
+  border:2px solid cyan;
+  background:transparent;
+  color:cyan;
+  font-size:14px;
+  cursor:pointer;
+}
+
+.plan-btn:hover{
+  background:cyan;
+  color:black;
+}
+
+/* ================= TERMS & CONDITIONS ================= */
+.terms{
+  max-width:800px;
+  margin:70px auto 30px auto;
+  padding:0 30px;
+}
+
+.terms h2{
+  font-size:26px;
+  color:cyan;
+  text-shadow:0 0 12px cyan;
+  margin-bottom:15px;
+  text-align:center;
+}
+
+.terms h3{
+  font-size:15px;
+  color:cyan;
+  margin:18px 0 6px 0;
+}
+
+.terms p{
+  font-size:13px;
+  line-height:1.7;
+  color:#999;
+}
+
+/* ================= FOOTER / SOCIAL ================= */
+footer{
+  text-align:center;
+  padding:40px 20px 30px 20px;
+  border-top:1px solid #1a1a1a;
+  margin-top:40px;
+}
+
+.social-row{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  margin-bottom:18px;
+}
+
+.social-icon{
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  border:2px solid cyan;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 0 10px cyan;
+  transition:0.25s;
+  text-decoration:none;
+}
+
+.social-icon:hover{
+  box-shadow:0 0 22px cyan;
+  transform:translateY(-4px);
+}
+
+.social-icon svg{
+  width:20px;
+  height:20px;
+  fill:cyan;
+}
+
+footer .foot-note{
+  font-size:12px;
+  color:#555;
+}
+
+/* ================= AUTH SCREEN ================= */
+#authScreen{
+  display:none;
+  height:100vh;
+  justify-content:center;
+  align-items:center;
+}
+
+.box{
+  width:340px;
+  max-height:90vh;
+  overflow-y:auto;
+  padding:30px;
+  background:#111;
+  border-radius:20px;
+  box-shadow:0 0 30px cyan;
+}
+
+.box h2{
+  text-align:center;
+  color:cyan;
+  text-shadow:0 0 15px cyan;
+  margin-bottom:10px;
+}
+
+.input-box{
+  margin:15px 0;
+}
+
+.input-box label{
+  font-size:13px;
+  color:#aaa;
+  display:block;
+  margin-bottom:5px;
+}
+
+.row{
+  display:flex;
+  gap:8px;
+}
+
+input{
+  width:100%;
+  padding:12px;
+  border-radius:10px;
+  border:2px solid cyan;
+  background:transparent;
+  color:white;
+  outline:none;
+  box-shadow:0 0 8px cyan;
+  font-size:14px;
+}
+
+.otp-btn{
+  padding:0 14px;
+  border-radius:10px;
+  border:2px solid cyan;
+  background:transparent;
+  color:cyan;
+  font-size:12px;
+  cursor:pointer;
+  white-space:nowrap;
+  box-shadow:0 0 8px cyan;
+}
+
+.otp-btn:hover{
+  box-shadow:0 0 20px cyan;
+}
+
+.verified-tag{
+  color:#00ff88;
+  font-size:12px;
+  margin-top:5px;
+  display:none;
+}
+
+.otp-field{
+  display:none;
+  margin-top:10px;
+}
+
+.main-btn{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:20px;
+  background:cyan;
+  color:black;
+  font-size:18px;
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:15px;
+  box-shadow:0 0 20px cyan;
+}
+
+.main-btn:hover{
+  box-shadow:0 0 40px cyan;
+}
+
+.switch{
+  text-align:center;
+  margin-top:15px;
+  color:#aaa;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.note{
+  font-size:11px;
+  color:#666;
+  text-align:center;
+  margin-top:12px;
+}
+
+.back{
+  text-align:center;
+  margin-top:10px;
+  color:#666;
+  font-size:12px;
+  cursor:pointer;
+}
+
+/* ================= APP SCREEN ================= */
+#appScreen{
+  display:none;
+  height:100vh;
+  position:relative;
+}
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 25px;
+  position:relative;
+  z-index:20;
+}
+
+.menu-circle{
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  border:2px solid cyan;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:5px;
+  cursor:pointer;
+  box-shadow:0 0 10px cyan;
+  background:transparent;
+}
+
+.menu-circle span{
+  width:20px;
+  height:2px;
+  background:cyan;
+  box-shadow:0 0 6px cyan;
+}
+
+.right-controls{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.newchat-oval{
+  padding:10px 22px;
+  border-radius:30px;
+  border:2px solid cyan;
+  background:transparent;
+  color:cyan;
+  font-size:15px;
+  cursor:pointer;
+  box-shadow:0 0 10px cyan;
+  text-shadow:0 0 6px cyan;
+}
+
+.newchat-oval:hover{
+  box-shadow:0 0 25px cyan;
+}
+
+.dots-btn{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  border:2px solid cyan;
+  background:transparent;
+  color:cyan;
+  font-size:20px;
+  cursor:pointer;
+  box-shadow:0 0 10px cyan;
+}
+
+.sidebar{
+  position:fixed;
+  top:0; left:0;
+  width:300px;
+  height:100%;
+  background:#0a0a0a;
+  border-right:2px solid cyan;
+  box-shadow:0 0 25px cyan;
+  transform:translateX(-100%);
+  transition:0.3s;
+  z-index:15;
+  padding:80px 20px 20px 20px;
+  overflow-y:auto;
+}
+
+.sidebar.active{
+  transform:translateX(0);
+}
+
+.sidebar h3{
+  color:cyan;
+  text-shadow:0 0 10px cyan;
+  margin-bottom:15px;
+}
+
+.chat-item{
+  padding:12px;
+  margin-bottom:8px;
+  border:1px solid #222;
+  border-radius:10px;
+  color:#ccc;
+  cursor:pointer;
+}
+
+.chat-item:hover{
+  border-color:cyan;
+  box-shadow:0 0 10px cyan;
+  color:white;
+}
+
+.close{
+  cursor:pointer;
+  color:#aaa;
+  font-size:20px;
+}
+
+.dropdown{
+  position:absolute;
+  top:65px;
+  right:25px;
+  background:#0a0a0a;
+  border:2px solid cyan;
+  border-radius:15px;
+  box-shadow:0 0 20px cyan;
+  display:none;
+  flex-direction:column;
+  min-width:180px;
+  overflow:hidden;
+  z-index:25;
+}
+
+.dropdown.active{
+  display:flex;
+}
+
+.dropdown div{
+  padding:12px 18px;
+  cursor:pointer;
+  color:#ddd;
+  border-bottom:1px solid #222;
+}
+
+.dropdown div:last-child{
+  border-bottom:none;
+}
+
+.dropdown div:hover{
+  background:#111;
+  color:cyan;
+  text-shadow:0 0 8px cyan;
+}
+
+/* ---- chat-area now holds scrolling messages, not just a static welcome ---- */
+.chat-area{
+  height:calc(100vh - 160px);
+  display:flex;
+  flex-direction:column;
+  overflow-y:auto;
+  padding:20px;
+}
+
+.chat-area .welcome{
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#555;
+  text-align:center;
+}
+
+.chat-area h1{
+  font-size:40px;
+  background:linear-gradient(90deg,cyan,#00aaff);
+  -webkit-background-clip:text;
+  color:transparent;
+  text-shadow:0 0 20px cyan;
+}
+
+.msg-row{
+  display:flex;
+  margin-bottom:14px;
+}
+
+.msg-row.user{
+  justify-content:flex-end;
+}
+
+.msg-row.bot{
+  justify-content:flex-start;
+}
+
+.bubble{
+  max-width:75%;
+  padding:12px 16px;
+  border-radius:16px;
+  font-size:15px;
+  line-height:1.5;
+  white-space:pre-wrap;
+  word-wrap:break-word;
+}
+
+.msg-row.user .bubble{
+  background:cyan;
+  color:black;
+  border-bottom-right-radius:4px;
+}
+
+.msg-row.bot .bubble{
+  background:#111;
+  border:1px solid #1c1c1c;
+  color:#eee;
+  border-bottom-left-radius:4px;
+}
+
+.msg-row.bot .bubble.loading{
+  color:#666;
+  font-style:italic;
+}
+
+.input-bar{
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  width:80%;
+  max-width:800px;
+  background:#111;
+  border:2px solid cyan;
+  border-radius:25px;
+  box-shadow:0 0 20px cyan;
+  display:flex;
+  align-items:flex-end;
+  padding:10px 15px;
+}
+
+.input-bar textarea{
+  flex:1;
+  background:transparent;
+  border:none;
+  outline:none;
+  color:white;
+  font-size:16px;
+  resize:none;
+  max-height:200px;
+  overflow-y:auto;
+  padding:8px;
+  font-family:Arial;
+}
+
+.upload-btn{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  border:2px solid cyan;
+  background:transparent;
+  color:cyan;
+  font-size:20px;
+  cursor:pointer;
+  box-shadow:0 0 10px cyan;
+  margin-left:10px;
+  flex-shrink:0;
+}
+
+.upload-btn:hover{
+  box-shadow:0 0 25px cyan;
+}
+
+.send-btn{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  border:none;
+  background:cyan;
+  color:black;
+  font-size:18px;
+  cursor:pointer;
+  box-shadow:0 0 15px cyan;
+  margin-left:8px;
+  flex-shrink:0;
+}
+
+.send-btn:disabled{
+  opacity:0.5;
+  cursor:not-allowed;
+}
+</style>
+</head>
+<body>
+
+<!-- ================= LANDING SCREEN ================= -->
+<div id="landingScreen">
+  <nav>
+    <div class="logo">My AI</div>
+    <div>Products &nbsp; Research &nbsp; Company</div>
+  </nav>
+
+  <section class="hero">
+    <h1>Build the Future with AI</h1>
+    <p>Create powerful AI experiences with modern technology.</p>
+   <p>This AI is made by MYcorp,establised in 2026.</p><br/>
+   <p>This ai can generate images,solve task<br/>
+    make websites,give live data,etc.</p>
+    <button class="start" onclick="showAuth()">Get Started</button>
+  </section>
+
+  <!-- ================= PRICING ================= -->
+  <section class="pricing" id="pricing">
+    <h2>Upgrade Your Plan</h2>
+    <p>Chuno wo plan jo aapki zaroorat ke hisaab se sahi ho.</p>
+
+    <div class="plans">
+
+      <div class="plan-card">
+        <span class="plan-tag">FREE</span>
+        <div class="plan-name">Starter</div>
+        <div class="plan-price">₹0<span>/month</span></div>
+        <ul class="plan-features">
+          <li>10 chats</li>
+          <li>2 image generations</li>
+        </ul>
+        <button class="plan-btn">Current Plan</button>
+      </div>
+
+      <div class="plan-card">
+        <span class="plan-tag">BASIC</span>
+        <div class="plan-name">Plan 1</div>
+        <div class="plan-price">₹49<span>/month</span></div>
+        <ul class="plan-features">
+          <li>50 chats</li>
+          <li>5 image generations</li>
+        </ul>
+        <button class="plan-btn">Upgrade</button>
+      </div>
+
+      <div class="plan-card">
+        <span class="plan-tag">VALUE</span>
+        <div class="plan-name">Plan 2</div>
+        <div class="plan-price">₹99<span>/month</span></div>
+        <ul class="plan-features">
+          <li>75 chats</li>
+          <li>7 image generations</li>
+        </ul>
+        <button class="plan-btn">Upgrade</button>
+      </div>
+
+      <div class="plan-card featured">
+        <span class="plan-tag">POPULAR</span>
+        <div class="plan-name">Plan 3</div>
+        <div class="plan-price">₹199<span>/month</span></div>
+        <ul class="plan-features">
+          <li>100 chats</li>
+          <li>PDF summaries</li>
+          <li>Voice search</li>
+        </ul>
+        <button class="plan-btn">Upgrade</button>
+      </div>
+
+      <div class="plan-card">
+        <span class="plan-tag">PRO</span>
+        <div class="plan-name">Plan 4</div>
+        <div class="plan-price">₹299<span>/month</span></div>
+        <ul class="plan-features">
+          <li>150 chats</li>
+          <li>10 image generations</li>
+          <li>PDF summaries</li>
+          <li>Voice search</li>
+        </ul>
+        <button class="plan-btn">Upgrade</button>
+      </div>
+
+      <div class="plan-card">
+        <span class="plan-tag">MAX</span>
+        <div class="plan-name">Plan 5</div>
+        <div class="plan-price">₹499<span>/month</span></div>
+        <ul class="plan-features">
+          <li>200 chats</li>
+          <li>20 image generations</li>
+          <li>PDF summaries</li>
+          <li>1 AI Agent</li>
+        </ul>
+        <button class="plan-btn">Upgrade</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= TERMS & CONDITIONS ================= -->
+  <section class="terms" id="terms">
+    <h2>Terms &amp; Conditions</h2>
+
+    <h3>1. Acceptance of Terms</h3>
+    <p>My AI ka use karke, aap in terms and conditions se agree karte hain. Agar aap in terms se agree nahi karte, please service use na karein.</p>
+
+    <h3>2. Subscription &amp; Billing</h3>
+    <p>Paid plans monthly basis par renew hote hain. Chats aur image generation limits har billing cycle ke start mein reset hoti hain. Unused credits agle month carry-forward nahi hote, jab tak specifically mention na kiya jaaye.</p>
+
+    <h3>3. Fair Usage</h3>
+    <p>Har plan ki apni chat/image limit hai. Automated abuse, spam, ya limits ko bypass karne ki koshish account suspension ka reason ban sakti hai.</p>
+
+    <h3>4. Content Responsibility</h3>
+    <p>AI se generate hui responses (text, image, voice, summaries) informational purpose ke liye hain. Critical decisions (legal, medical, financial) lene se pehle apni taraf se verify zaroor karein.</p>
+
+    <h3>5. Refunds</h3>
+    <p>Subscription cancel karne par current billing cycle khatam hone tak access milta rahega. Partial refunds normally nahi diye jaate, jab tak local consumer law mein alag se required na ho.</p>
+
+    <h3>6. Changes to Terms</h3>
+    <p>Ye terms samay samay par update ho sakte hain. Continued use of the service naye terms ki acceptance maana jayega.</p>
+  </section>
+
+  <!-- ================= FOOTER / SOCIAL ================= -->
+  <footer>
+    <div class="social-row">
+
+      <a class="social-icon" href="PASTE_YOUR_LINK_HERE" title="X (Twitter)">
+        <svg viewBox="0 0 24 24"><path d="M18.9 2H22l-7.6 8.7L23 22h-6.9l-5.4-6.6L4.5 22H1.4l8.1-9.3L1 2h7l4.9 6.1L18.9 2zm-1.2 18h1.9L7.4 4H5.4l12.3 16z"/></svg>
+      </a>
+
+      <a class="social-icon" href="PASTE_YOUR_LINK_HERE" title="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3 0 4.1.06 1.1.05 1.8.22 2.4.46.7.27 1.2.6 1.7 1.1.5.5.86 1 1.1 1.7.24.6.4 1.3.46 2.4.06 1.1.06 1.4.06 4.1s0 3-.06 4.1c-.05 1.1-.22 1.8-.46 2.4-.27.7-.6 1.2-1.1 1.7-.5.5-1 .86-1.7 1.1-.6.24-1.3.4-2.4.46-1.1.06-1.4.06-4.1.06s-3 0-4.1-.06c-1.1-.05-1.8-.22-2.4-.46-.7-.27-1.2-.6-1.7-1.1-.5-.5-.86-1-1.1-1.7-.24-.6-.4-1.3-.46-2.4C2 15 2 14.7 2 12s0-3 .06-4.1c.05-1.1.22-1.8.46-2.4.27-.7.6-1.2 1.1-1.7.5-.5 1-.86 1.7-1.1.6-.24 1.3-.4 2.4-.46C9 2 9.3 2 12 2zm0 2c-2.65 0-2.96 0-4 .06-.87.04-1.34.18-1.66.3-.42.16-.72.35-1.03.66-.31.31-.5.61-.66 1.03-.12.32-.26.79-.3 1.66C4.3 9.04 4.3 9.35 4.3 12s0 2.96.06 4c.04.87.18 1.34.3 1.66.16.42.35.72.66 1.03.31.31.61.5 1.03.66.32.12.79.26 1.66.3 1.04.06 1.35.06 4 .06s2.96 0 4-.06c.87-.04 1.34-.18 1.66-.3.42-.16.72-.35 1.03-.66.31-.31.5-.61.66-1.03.12-.32.26-.79.3-1.66.06-1.04.06-1.35.06-4s0-2.96-.06-4c-.04-.87-.18-1.34-.3-1.66-.16-.42-.35-.72-.66-1.03a2.76 2.76 0 0 0-1.03-.66c-.32-.12-.79-.26-1.66-.3C14.96 4.3 14.65 4.3 12 4.3zm0 3.4a4.3 4.3 0 1 1 0 8.6 4.3 4.3 0 0 1 0-8.6zm0 2a2.3 2.3 0 1 0 0 4.6 2.3 2.3 0 0 0 0-4.6zm5.5-2.6a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
+      </a>
+
+      <a class="social-icon" href="PASTE_YOUR_LINK_HERE" title="YouTube">
+        <svg viewBox="0 0 24 24"><path d="M23 12s0-3.6-.46-5.3a2.9 2.9 0 0 0-2-2C18.9 4.2 12 4.2 12 4.2s-6.9 0-8.54.5a2.9 2.9 0 0 0-2 2C1 8.4 1 12 1 12s0 3.6.46 5.3a2.9 2.9 0 0 0 2 2c1.64.5 8.54.5 8.54.5s6.9 0 8.54-.5a2.9 2.9 0 0 0 2-2C23 15.6 23 12 23 12zM9.8 15.5v-7l6.2 3.5-6.2 3.5z"/></svg>
+      </a>
+
+      <a class="social-icon" href="PASTE_YOUR_LINK_HERE" title="WhatsApp Channel">
+        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.1-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.4-1.7-.1-.2 0-.4.1-.5l.4-.4c.1-.1.1-.3.2-.4.1-.2 0-.3 0-.4-.1-.1-.5-1.3-.7-1.8-.2-.4-.4-.4-.5-.4h-.4c-.2 0-.4.1-.6.3-.6.6-.9 1.3-.9 2.1 0 1.4 1 2.7 1.1 2.9.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3z"/></svg>
+      </a>
+
+    </div>
+    <p class="foot-note">© 2026 My AI — MYcorp. All rights reserved.</p>
+  </footer>
+</div>
+
+<!-- ================= AUTH SCREEN ================= -->
+<div id="authScreen">
+  <div class="box" id="form">
+    <h2 id="title">Login</h2>
+
+    <!-- LOGIN FIELDS -->
+    <div id="loginFields">
+      <div class="input-box">
+        <label>Email or Mobile</label>
+        <input type="text" placeholder="Enter email or mobile">
+      </div>
+      <div class="input-box">
+        <label>Password</label>
+        <input type="password" placeholder="Enter password">
+      </div>
+    </div>
+
+    <!-- REGISTER FIELDS -->
+    <div id="registerFields" style="display:none;">
+
+      <div class="input-box">
+        <label>Full Name</label>
+        <input type="text" placeholder="Your full name">
+      </div>
+
+      <div class="input-box">
+        <label>Email</label>
+        <div class="row">
+          <input type="email" id="emailInput" placeholder="you@example.com">
+          <button class="otp-btn" onclick="sendOtp('email')">Send OTP</button>
+        </div>
+        <div class="otp-field" id="emailOtpField">
+          <input type="text" maxlength="6" placeholder="Enter Email OTP">
+        </div>
+        <div class="verified-tag" id="emailVerified">✔ Email verified</div>
+      </div>
+
+      <div class="input-box">
+        <label>Mobile Number</label>
+        <div class="row">
+          <input type="tel" id="mobileInput" placeholder="Mobile number">
+          <button class="otp-btn" onclick="sendOtp('mobile')">Send OTP</button>
+        </div>
+        <div class="otp-field" id="mobileOtpField">
+          <input type="text" maxlength="6" placeholder="Enter Mobile OTP">
+        </div>
+        <div class="verified-tag" id="mobileVerified">✔ Mobile verified</div>
+      </div>
+
+      <div class="input-box">
+        <label>Set Password</label>
+        <input type="password" placeholder="Create your password">
+      </div>
+
+      <div class="note">Both email &amp; mobile verification required to register</div>
+    </div>
+
+    <button class="main-btn" id="btn" onclick="enterApp()">Login</button>
+    <div class="switch" onclick="changeForm()">Create new account? Register</div>
+    <div class="back" onclick="backToLanding()">&larr; Back to home</div>
+  </div>
+</div>
+
+<!-- ================= APP SCREEN ================= -->
+<div id="appScreen">
+
+  <div class="topbar">
+    <div class="menu-circle" onclick="toggleSidebar(event)">
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="right-controls">
+      <button class="newchat-oval" onclick="newChat()">+ New Chat</button>
+      <button class="dots-btn" onclick="toggleDots(event)">⋮</button>
+    </div>
+
+    <div class="dropdown" id="dropdown">
+      <div>Share</div>
+      <div>Pin</div>
+      <div>Add to Project</div>
+      <div>Upload File</div>
+      <div>Find in Chat</div>
+      <div>Add to Home</div>
+      <div>Archive</div>
+      <div style="color:#ff5577;">Delete</div>
+    </div>
+  </div>
+
+  <div class="sidebar" id="sidebar">
+    <span class="close" style="position:absolute; top:15px; right:15px;" onclick="toggleSidebar(event)">&times;</span>
+    <h3>Chats</h3>
+    <div class="chat-item">Login page design</div>
+    <div class="chat-item">Combining HTML pages</div>
+    <div class="chat-item">Main chat UI layout</div>
+  </div>
+
+  <div class="chat-area" id="chatArea">
+    <div class="welcome" id="welcomeMsg">
+      <h1>Welcome to MY-AI</h1>
+    </div>
+  </div>
+
+  <div class="input-bar">
+    <textarea id="msg" rows="1" placeholder="Message..." oninput="autoGrow(this)" onkeydown="handleKeyDown(event)"></textarea>
+    <button class="upload-btn">⬆</button>
+    <button class="send-btn" id="sendBtn" onclick="sendMessage()">➤</button>
+  </div>
+
+</div>
+
+<script>
+// 👉 Yahi tumhara live Render backend URL hai
+const BACKEND_URL = "https://m1-41sa.onrender.com";
+const CHAT_ENDPOINT = BACKEND_URL + "/api/chat/normal";
+
+let login = true;
+let chatHistory = []; // { role: "user"/"assistant", content: "..." }
+
+function showAuth(){
+  document.getElementById("landingScreen").style.display = "none";
+  document.getElementById("authScreen").style.display = "flex";
+}
+
+function backToLanding(){
+  document.getElementById("authScreen").style.display = "none";
+  document.getElementById("landingScreen").style.display = "block";
+}
+
+function changeForm(){
+  let title = document.getElementById("title");
+  let btn = document.getElementById("btn");
+
+  if(login){
+    title.innerHTML = "Register";
+    document.getElementById("loginFields").style.display = "none";
+    document.getElementById("registerFields").style.display = "block";
+    btn.innerHTML = "Register";
+    document.querySelector(".switch").innerHTML = "Already have account? Login";
+    login = false;
+  } else {
+    title.innerHTML = "Login";
+    document.getElementById("loginFields").style.display = "block";
+    document.getElementById("registerFields").style.display = "none";
+    btn.innerHTML = "Login";
+    document.querySelector(".switch").innerHTML = "Create new account? Register";
+    login = true;
+  }
+}
+
+function sendOtp(type){
+  if(type === "email"){
+    document.getElementById("emailOtpField").style.display = "block";
+  } else {
+    document.getElementById("mobileOtpField").style.display = "block";
+  }
+  alert((type === "email" ? "Email" : "Mobile") + " OTP sent (demo only — real OTP needs backend + SMS/Email API).");
+}
+
+function enterApp(){
+  document.getElementById("authScreen").style.display = "none";
+  document.getElementById("appScreen").style.display = "block";
+}
+
+function toggleSidebar(e){
+  e.stopPropagation();
+  document.getElementById("sidebar").classList.toggle("active");
+}
+
+function toggleDots(e){
+  e.stopPropagation();
+  document.getElementById("dropdown").classList.toggle("active");
+}
+
+function autoGrow(el){
+  el.style.height = "auto";
+  el.style.height = el.scrollHeight + "px";
+}
+
+function handleKeyDown(e){
+  // Enter se send, Shift+Enter se new line
+  if(e.key === "Enter" && !e.shiftKey){
+    e.preventDefault();
+    sendMessage();
+  }
+}
+
+function newChat(){
+  chatHistory = [];
+  const chatArea = document.getElementById("chatArea");
+  chatArea.innerHTML = '<div class="welcome" id="welcomeMsg"><h1>Welcome to MY-AI</h1></div>';
+}
+
+function appendMessage(role, text, isLoading){
+  const chatArea = document.getElementById("chatArea");
+  const welcome = document.getElementById("welcomeMsg");
+  if(welcome) welcome.remove();
+
+  const row = document.createElement("div");
+  row.className = "msg-row " + (role === "user" ? "user" : "bot");
+
+  const bubble = document.createElement("div");
+  bubble.className = "bubble" + (isLoading ? " loading" : "");
+  bubble.textContent = text;
+
+  row.appendChild(bubble);
+  chatArea.appendChild(row);
+  chatArea.scrollTop = chatArea.scrollHeight;
+  return bubble;
+}
+
+async function sendMessage(){
+  const textarea = document.getElementById("msg");
+  const sendBtn = document.getElementById("sendBtn");
+  const message = textarea.value.trim();
+  if(!message) return;
+
+  appendMessage("user", message);
+  chatHistory.push({ role: "user", content: message });
+
+  textarea.value = "";
+  autoGrow(textarea);
+  sendBtn.disabled = true;
+
+  const loadingBubble = appendMessage("bot", "Typing...", true);
+
+  try{
+    const res = await fetch(CHAT_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        message: message,
+        history: chatHistory.slice(0, -1) // pichla history bhejo, current message alag se already gaya
+      })
+    });
+
+    if(!res.ok){
+      throw new Error("Server error: " + res.status);
+    }
+
+    const data = await res.json();
+    const reply = data.reply || "(Koi response nahi mila)";
+
+    loadingBubble.classList.remove("loading");
+    loadingBubble.textContent = reply;
+    chatHistory.push({ role: "assistant", content: reply });
+  } catch(err){
+    loadingBubble.classList.remove("loading");
+    loadingBubble.textContent = "⚠ Error: " + err.message;
+  } finally {
+    sendBtn.disabled = false;
+  }
+}
+
+document.addEventListener("click", function(e){
+  const dropdown = document.getElementById("dropdown");
+  const dotsBtn = document.querySelector(".dots-btn");
+  if(dropdown && !dropdown.contains(e.target) && e.target !== dotsBtn){
+    dropdown.classList.remove("active");
+  }
+
+  const sidebar = document.getElementById("sidebar");
+  const menuBtn = document.querySelector(".menu-circle");
+  if(sidebar && menuBtn && !sidebar.contains(e.target) && !menuBtn.contains(e.target)){
+    sidebar.classList.remove("active");
+  }
+});
+</script>
+
+</body>
+</html>
